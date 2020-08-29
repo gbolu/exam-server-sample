@@ -1,0 +1,22 @@
+{
+  "name": "exam-sample",
+  "version": "1.0.0",
+  "description": "Simple app for serving exams online",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gbolu/exam-server-sample.git"
+  },
+  "keywords": [
+    "exam"
+  ],
+  "author": "Gbolu Adeyemi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gbolu/exam-server-sample/issues"
+  },
+  "homepage": "https://github.com/gbolu/exam-server-sample#readme"
+}
