@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= examDetails.EXAM_NAME %> EXAM Results</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .true {
+        background-color: green;
+      }
+
+      .false {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="exam-title"><%= examDetails.EXAM_NAME %></div>
+    <br />
+
+    <div>Examinee: <%= userDetails.DISPLAY_NAME %></div>
+    <br />
+
+    <p>Submitted at: <%= userSubmission.SUBMITTED_AT %></p>
+
+    <div class="results">
+      <table>
+        <tr>
+          <th><center>QUESTION</center></th>
+          <th><center>CORRECT ANSWER</center></th>
+          <th><center>YOUR ANSWER</center></th>
+        </tr>
+
+        <% for( let index = 0; index < examQuestions.length; index++ ) { %>
+        <tr>
+          <th><%= examQuestions[index].QUESTION %></th>
+          <th><%= examQuestions[index].CORRECT_OPTION.optionsText %></th>
+          <th
+            class="<%= userSubmission.SUBMISSION.attempt[index].question_pass %>"
+          >
+            <%= userSubmission.SUBMISSION.attempt[index].option_choice %>
+          </th>
+        </tr>
+
+        <% } %>
+      </table>
+    </div>
+
+    <div>
+        <h2>Your score is : <%= userSubmission.SCORE %> out of a possible <%= examQuestions.length * 10 %>  </h2>
+    </div>
+    <script src="js/exams.js"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= examDetails.EXAM_NAME %> EXAM</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/exam.css" />
+  </head>
+  <body>
+    <div class="exam-title"><%= examDetails.EXAM_NAME %></div>
+    <br />
+
+    <p>Each question is worth <strong>10</strong> marks.</p>
+    <br />
+
+    <div>Examinee: <%= userDetails.DISPLAY_NAME %></div>
+    <br />
+    <div class="exam-questions">
+      <form
+        id="user_submission"
+        action="/exams/submit?examID=<%= examDetails.ID %>&USER_REG_ID=<%= userDetails.USER_REG_ID %>&DISPLAY_NAME=<%= userDetails.DISPLAY_NAME %> "
+        method="POST"
+      >
+        <% for( let index = 0; index < exam_questions.length; index++ ) { %>
+        <strong class="questions">Question <%= index + 1%> :</strong
+        >&nbsp;&nbsp;&nbsp;<%= exam_questions[index].QUESTION %>
+
+        <br /><br />
+
+        <% exam_questions[index].OPTIONS.options.forEach(option => { %>
+        <input
+          type="radio"
+          class="userSubmissions"
+          name="QUESTION_<%= exam_questions[index].QUESTION_ID %>"
+          value="<%= option.optionsText %>"
+        />
+        <label for="QUESTION_<%= exam_questions[index].QUESTION_ID %>">
+          <%= option.optionsText %></label
+        >
+        <br /><br />
+        <% }) %> <%}%>
+        <button id="btn_submit" type="submit">Submit Exam</button>
+      </form>
+    </div>
+    <script src="js/exams.js"></script>
+  </body>
+</html>
